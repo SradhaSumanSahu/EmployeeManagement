@@ -1,0 +1,41 @@
+<div class="outer">
+<input #checkbox1 type ="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+<div class="container">
+</div>
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm"  (ngSubmit)="myForm.form.valid && submit(myForm)">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <input type="hidden" name="iD" [value]="designationService.designationdata.iD">
+                    <label for ="name">Designation ID</label>
+                    <div *ngIf="designationID.invalid &&(designationID.touched || designationID.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="designationID" placeholder="Enter ID number" #designationID="ngModel" [(ngModel)]="designationService. designationdata.designationID" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for ="name">Designation</label>
+                    <div *ngIf="designation.invalid &&(designation.touched || designation.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="designation" placeholder=" Designation" #designation="ngModel" [(ngModel)]="designationService. designationdata.designation" required>
+                </div>
+                
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="submit" class ="btn btn-success btn-block">Save</button>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+

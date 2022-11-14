@@ -1,0 +1,44 @@
+<input #checkbox1 type ="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+<div class="container">
+</div>
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm"  (ngSubmit)="myForm.form.valid && submit(myForm)">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <input type="hidden" name="employeeId" [value]="leaveservice.leaveData.employeeId">
+                    <label for ="name">Employee Number</label>
+                    <div *ngIf="employeenumber.invalid &&(employeenumber.touched || employeenumber.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="employeenumber" placeholder="Enter your MID number" #employeenumber="ngModel" [(ngModel)]="leaveservice.leaveData.employeenumber" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for ="name">Leave type</label>
+                    <div *ngIf="leaveType.invalid &&(leaveType.touched || leaveType.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="leaveType" placeholder=" leave Type" #leaveType="ngModel" [(ngModel)]="leaveservice.leaveData.leaveType" required>
+                </div>
+                <div class="col-md-3">
+                    <label for ="name">Leave Reason</label>
+                    <div *ngIf="leaveReason.invalid &&(leaveReason.touched || leaveReason.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="leaveReason" placeholder="Type your leave reason" #leaveReason="ngModel" [(ngModel)]="leaveservice.leaveData.leaveReason" required>
+                </div>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="submit" class ="btn btn-success btn-block">Save</button>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

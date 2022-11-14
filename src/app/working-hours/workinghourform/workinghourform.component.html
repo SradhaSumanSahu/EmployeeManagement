@@ -1,0 +1,53 @@
+<input #checkbox1 type ="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+<div class="container">
+</div>
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm"  (ngSubmit)="myForm.form.valid && submit(myForm)">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <input type="hidden" name="id" [value]="workhourservice.workingHourData.id">
+                    <label for ="name">Employee Number</label>
+                    <div *ngIf="employeenumber.invalid &&(employeenumber.touched || employeenumber.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="employeenumber" placeholder="Enter your MID number" #employeenumber="ngModel" [(ngModel)]="workhourservice.workingHourData.employeenumber" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for ="name">Type Month</label>
+                    <div *ngIf="month.invalid &&(month.touched || month.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="month" placeholder="Type your leave reason" #month="ngModel" [(ngModel)]="workhourservice.workingHourData.month" required>
+                </div>
+                <div class="col-md-3">
+                    <label for ="name">Employee Working Hour</label>
+                    <div *ngIf="employeeWorkingHour.invalid &&(employeeWorkingHour.touched || employeeWorkingHour.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="employeeWorkingHour" placeholder="Type your leave reason" #employeeWorkingHour="ngModel" [(ngModel)]="workhourservice.workingHourData.employeeWorkingHour" required>
+                </div>
+                <div class="col-md-3">
+                    <label for ="name">Organisation Working Hour</label>
+                    <div *ngIf="organisationWorkingHour.invalid &&(organisationWorkingHour.touched || organisationWorkingHour.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="organisationWorkingHour" placeholder="organisationWorkingHour" #organisationWorkingHour="ngModel" [(ngModel)]="workhourservice.workingHourData.organisationWorkingHour" required>
+                </div>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="submit" class ="btn btn-success btn-block">Save</button>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+            </div>
+        
+        </div>
+        
+    </form>
+</div>

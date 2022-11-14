@@ -1,0 +1,39 @@
+<input #checkbox1 type ="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+<div class="container">
+</div>
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm"  (ngSubmit)="myForm.form.valid && submit(myForm)">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <input type="hidden" name="id" [value]="paymentruleservice.paymentRuleData.id">
+                    <label for ="name">PaymentRule Type</label> 
+                    <div *ngIf="paymentRulesType.invalid &&(paymentRulesType.touched || paymentRulesType.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="paymentRulesType" placeholder="Payment Rule type" #paymentRulesType="ngModel" [(ngModel)]="paymentruleservice.paymentRuleData.paymentRulesType" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for ="name"> Payment Rules</label>
+                    <div *ngIf="rules.invalid &&(rules.touched || rules.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type ="text" name="rules" placeholder="rules" #rules="ngModel" [(ngModel)]="paymentruleservice.paymentRuleData.rules" required>
+                </div>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="submit" class ="btn btn-success btn-block">Save</button>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+            </div>
+        
+        </div>
+        
+    </form>
+</div>

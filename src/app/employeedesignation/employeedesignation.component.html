@@ -1,0 +1,32 @@
+<div class ="outer">
+<div class="container"></div>
+  <app-designationform></app-designationform>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Designation </th>
+        <th>Designation ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let designation of designationService.listdesignation">
+        <td>{{designation.designation}}</td>
+        <td>{{designation.designationID}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="designationform" (click)="populatedesignation(designation)" >Edit</a>
+           <a class="dropdown-item" routerLink="designationform" (click)="deletedesignation(designation.iD)">Delete</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+
+  </table>
+</div>
+

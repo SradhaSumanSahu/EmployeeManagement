@@ -1,0 +1,30 @@
+<div class="outer">
+<div class="container"></div>
+  <app-paymentform></app-paymentform>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>PaymentRules Type</th>
+        <th>Rules</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let paymentrule of paymentruleservice.listpaymentrule">
+      <td>{{paymentrule.paymentRulesType}}</td>
+      <td>{{paymentrule.rules}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="paymentform" (click)="populatePaymentRule(paymentrule)" >Edit</a>
+           <a class="dropdown-item" routerLink="paymentform" (click)="deletePayment(paymentrule.id)">Delete</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
